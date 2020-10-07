@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+{%block title%}
+Blog
+{%endblock%}
+
+
+
+
+{%block content%}
+
+	{% for post in posts %}
+
+		<article>
+			<h2>
+				<a href="{{ url_for('posts_show',id=post.id) }}">{{ post.title }}</a>
+			</h2>
+		</article>
+		<hr>
+
+	{% endfor %}
+
+{%endblock%}
