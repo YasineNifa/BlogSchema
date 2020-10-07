@@ -20,7 +20,20 @@ class Post(db.Model):
 		return '<Title "{}">'.format(self.title)
 
 
+@app.context_processor
+def utility_processor():
+    def pluralize(count, singular, plural=None):
+        if not isinstance(count, int):
+            raise ValueError('"{}" must be an integer'.format(count))
 
+        if plural is None:
+            plural = singular + 's'
+
+        string = singular if count == 1 else plural
+
+        return "{} {}".format(count, string)
+
+    return dict(pluralize=pluralize, now=datetime.now())
 #Controleur
 @app.route('/')
 def home():
