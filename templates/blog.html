@@ -10,7 +10,7 @@ Blog
 
 
 {%block content%}
-
+	<h1>Blog ({{ pluralize(posts|length, 'post') }})</h1>
 	{% for post in posts %}
 
 		<article>
